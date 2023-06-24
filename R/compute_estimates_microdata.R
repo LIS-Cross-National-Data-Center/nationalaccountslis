@@ -20,7 +20,7 @@
 compute_estimates_lis_microdata <- function(datasets, data_path, weights, formulas=nationalaccountslis::lis_dashboard_formulas){
 
     # check that the 4th character of each dataset is either 'i', 'w' or 'e'
-    assertthat::assert_that(all(stringr::str_sub(datasets, 4, 4) %in% c("i", "w", "e")),
+    assertthat::assert_that(all(stringr::str_sub(datasets, 5, 5) %in% c("i", "w", "e")),
         msg = "The 4th character of each dataset must be either 'i', 'w' or 'e'.")
 
     # if data_path has length 1, repeat it to have the same length as datasets

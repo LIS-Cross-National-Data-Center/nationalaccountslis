@@ -8,7 +8,7 @@ compute_estimates_lis_microdata(
   datasets,
   data_path,
   weights,
-  formulas = nationalaccountslis::dashboard_formulas
+  formulas = nationalaccountslis::lis_dashboard_formulas
 )
 }
 \arguments{
