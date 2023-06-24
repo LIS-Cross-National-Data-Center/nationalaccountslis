@@ -29,9 +29,10 @@ compute_estimates_lis_microdata <- function(datasets, data_path, weights, formul
     }
 
     # for each dataset and data_path (start iteration with purrr::map2):
-    purrr::map2(datasets, data_path, 
-    .f = ~compute_estimates_single_lis_file(dataset = .x, data_path = .y, weights = weights, formulas = formulas), 
-        weights, formulas)
+    purrr::map2_dfr(purrr::set_names(datasets), data_path, 
+        .f = ~compute_estimates_single_lis_file(dataset = .x, data_path = .y, weights = weights, formulas = formulas), 
+        weights, formulas,
+        .id = "ccyyd")
 
 }
 
@@ -56,6 +57,9 @@ compute_estimates_single_lis_file <- function(dataset, data_path, weights, formu
 
     # ** load data
     df <- read_lis_microdata(dataset, data_path, weights, formulas)
+
+    print("dataset")
+    print(names(dataset))
 
     # ** create new variables
     df <- compute_formulas(df, formulas)
