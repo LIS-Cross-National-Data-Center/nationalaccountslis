@@ -6,8 +6,8 @@
 \usage{
 download_na_oecd(
   start_year = 1967,
-  countries = nationalaccountstools::dashboard_countries,
-  items = nationalaccountslis::dashboard_items
+  countries = nationalaccountstools::lis_dashboard_countries,
+  items = nationalaccountslis::lis_dashboard_items
 )
 }
 \arguments{
