@@ -3,4 +3,6 @@
 .dta
 TODO.txt
 dev/
-.Rproj
+*.Rproj
+.lintr
+.Rbuildignore
