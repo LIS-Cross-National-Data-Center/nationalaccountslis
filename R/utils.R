@@ -4,8 +4,10 @@
 #'
 #' @return A vector of ISO3 country codes.
 #'
+#' \dontrun{
 #' @examples
 #' convert_iso2_to_iso3(c("US", "DE", "JP"))
+#' }
 convert_iso2_to_iso3 <- function(countries){
     countries <- toupper(countries)
 
@@ -41,15 +43,18 @@ convert_iso2_to_iso3 <- function(countries){
 #'
 #' @param df A data frame containing the data to which the formulas should be applied.
 #' @param formulas A named list of formulas, with each formula represented as a string.
+#'   E.g. list(Z = "a + b", Y = "c+d")
 #'
 #' @return A data frame that is a copy of the input data frame, but with additional columns
 #'         for each formula in the input list. The name of each new column is the name of
 #'         the corresponding formula in the input list.
 #'
+#' \dontrun{
 #' @examples
 #' df <- data.frame(a = 1:3, b = 4:6, c = 7:9, d = 10:12)
 #' formulas <- list(Z = "a + b", Y = "c+d")
 #' compute_formulas(df, formulas)
+#' }
 compute_formulas <- function(df, formulas) {
 
   df_new <- df
