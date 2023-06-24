@@ -17,5 +17,4 @@ Convert ISO2 country codes to ISOW3
 }
 \examples{
 convert_iso2_to_iso3(c("US", "DE", "JP"))
-
 }
