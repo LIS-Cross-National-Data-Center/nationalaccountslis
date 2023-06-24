@@ -15,6 +15,8 @@
 #' @param formulas A list of formulas to compute the National Accounts estimates.
 #' 
 #' @return A list of dataframes with the National Accounts estimates from the microdata.
+#' 
+#' @export
 compute_estimates_lis_microdata <- function(datasets, data_path, weights, formulas=nationalaccountslis::dashboard_formulas){
 
     # check that the 4th character of each dataset is either 'i', 'w' or 'e'

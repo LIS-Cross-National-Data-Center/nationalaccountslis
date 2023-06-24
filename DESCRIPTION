@@ -1,0 +1,24 @@
+Package: nationalaccountslis
+Title: National Accounts with LIS data
+Version: 0.0.0.9001
+Authors@R: 
+    person("Josep", "Espasa Reig", , "jespasareig@gmail.com", role = c("aut", "cre"),
+    )
+Description: R functions to download and compute National Accounts coverage ratios for LIS microdata.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports:
+    dplyr,
+    tidyr,
+    OECD,
+    testthat,
+    assertthat,
+    haven,
+    purrr,
+    stringr,
+    fs
+Depends: 
+    R (>= 2.10)
+LazyData: true

@@ -6,8 +6,6 @@
 #'
 #' @examples
 #' convert_iso2_to_iso3(c("US", "DE", "JP"))
-#'
-#' @export
 convert_iso2_to_iso3 <- function(countries){
     countries <- toupper(countries)
 
@@ -47,7 +45,6 @@ convert_iso2_to_iso3 <- function(countries){
 #' @return A data frame that is a copy of the input data frame, but with additional columns
 #'         for each formula in the input list. The name of each new column is the name of
 #'         the corresponding formula in the input list.
-#' @export
 #'
 #' @examples
 #' df <- data.frame(a = 1:3, b = 4:6, c = 7:9, d = 10:12)
