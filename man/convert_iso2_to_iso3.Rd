@@ -11,9 +11,12 @@ convert_iso2_to_iso3(countries)
 }
 \value{
 A vector of ISO3 country codes.
-
-\dontrun{
 }
 \description{
 Convert ISO2 country codes to ISOW3
+}
+\examples{
+\dontrun{
+convert_iso2_to_iso3(c("US", "DE", "JP"))
+}
 }

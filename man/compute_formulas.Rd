@@ -16,10 +16,15 @@ E.g. list(Z = "a + b", Y = "c+d")}
 A data frame that is a copy of the input data frame, but with additional columns
 for each formula in the input list. The name of each new column is the name of
 the corresponding formula in the input list.
-
-\dontrun{
 }
 \description{
 This function evaluates each formula in a list of formulas with respect to a data frame,
 adding the results as new columns to the data frame.
+}
+\examples{
+\dontrun{
+df <- data.frame(a = 1:3, b = 4:6, c = 7:9, d = 10:12)
+formulas <- list(Z = "a + b", Y = "c+d")
+compute_formulas(df, formulas)
+}
 }

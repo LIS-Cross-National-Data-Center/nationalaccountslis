@@ -23,3 +23,13 @@ the corresponding formula in the input list.
 \description{
 This function takes a data.frame and a list of strings containing formulas as input and applies the formulas to process the data.frame.
 }
+\examples{
+\dontrun{
+df <- data.frame(a = c(1, NA, 3), b = c(NA, 5, 6), c = c(7, 8, 9))
+list_formulas <- list(
+ X = "!is.na(a) ~ a, !is.na(b) ~ b, TRUE ~ c",
+ Y = "!is.na(m) ~ m, !is.na(l) ~ l, TRUE ~ NA"
+)
+apply_na_processing_formulas(df, list_formulas)
+}
+}
