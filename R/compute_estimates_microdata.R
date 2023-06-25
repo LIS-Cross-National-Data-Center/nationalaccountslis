@@ -59,7 +59,7 @@ compute_estimates_single_lis_file <- function(dataset, data_path, weights, formu
     df <- read_lis_microdata(dataset, data_path, weights, formulas)
 
     print("dataset")
-    print(names(dataset))
+    print(names(df))
 
     # ** create new variables
     df <- compute_formulas(df, formulas)
@@ -78,6 +78,8 @@ compute_estimates_single_lis_file <- function(dataset, data_path, weights, formu
 #'  Must either have length 1 (all datasets use the same weight variable) or the same length as formulas.
 #' @param formulas A list of strings witht the formulas to compute the National Accounts estimates.
 compute_gross_up_estimate <- function(df, weights, formulas){
+
+    df <- df[df[["relation"]] == 1000, ] # keep only household heads
 
     # gross up estimate when there's only one weight variable
     if(length(weights)==1){
