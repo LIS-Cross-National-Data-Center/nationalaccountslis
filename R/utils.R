@@ -87,3 +87,54 @@ parse_all_vars_from_formulas <- function(formulas){
         return(parsed_vars)
     }
 }
+
+
+
+#' Apply NA Processing Formulas
+#' 
+#' @description 
+#' This function takes a data.frame and a list of strings containing formulas as input and applies the formulas to process the data.frame.
+#'   
+#' @param df A data frame containing the data to which the formulas should be applied.
+#' @param list_formulas A named list of formulas, with each formula represented as a string.
+#'  E.g. list(
+#'    X = "!is.na(a) ~ a, !is.na(b) ~ b, TRUE ~ c",
+#' Y = "!is.na(m) ~ m, !is.na(l) ~ l, TRUE ~ NA"
+#' )
+#' 
+#' @return A data frame that is a copy of the input data frame, but with additional columns
+#'        for each formula in the input list. The name of each new column is the name of
+#'       the corresponding formula in the input list.
+#' 
+#' \dontrun{
+#' @examples
+#' df <- data.frame(a = c(1, NA, 3), b = c(NA, 5, 6), c = c(7, 8, 9))
+#' list_formulas <- list(
+#'  X = "!is.na(a) ~ a, !is.na(b) ~ b, TRUE ~ c",
+#'  Y = "!is.na(m) ~ m, !is.na(l) ~ l, TRUE ~ NA"
+#' )
+#' apply_na_processing_formulas(df, list_formulas)
+#' }
+apply_na_processing_formulas <- function(df, list_formulas) {
+
+  for (var in names(list_formulas)) {
+    exprs <- strsplit(list_formulas[[var]], "\\s*,\\s*")[[1]]
+    
+    # Create a new empty column
+    df <- dplyr::mutate(df, !!var := NA)
+    
+    for (expr in exprs) {
+      cond_val <- strsplit(expr, " ~ ")[[1]]
+      cond <- rlang::parse_expr(cond_val[1])
+      val <- rlang::parse_expr(cond_val[2])
+      
+      # Loop through rows
+      for(i in seq_len(nrow(df))) {
+        if (is.na(df[i, var]) & rlang::eval_tidy(cond, data = df[i,])) {
+          df[i, var] <- rlang::eval_tidy(val, data = df[i,])
+        }
+      }
+    }
+  }
+  df
+}
