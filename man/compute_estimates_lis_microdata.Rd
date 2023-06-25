@@ -8,7 +8,7 @@ compute_estimates_lis_microdata(
   datasets,
   data_path,
   weights,
-  formulas = nationalaccountslis::lis_dashboard_formulas
+  formulas_microdata = nationalaccountslis::lis_dashboard_microdata_formulas
 )
 }
 \arguments{
@@ -22,7 +22,7 @@ Must either have length 1 (all datasets in the same path) or the same length as 
 \item{weights}{A string or vector of strings with the names of the weight variable(s) to use.
 Must either have length 1 (all datasets use the same weight variable) or the same length as formulas.}
 
-\item{formulas}{A list of formulas to compute the National Accounts estimates.}
+\item{formulas_microdata}{A list of formulas to compute the National Accounts estimates.}
 }
 \value{
 A list of dataframes with the National Accounts estimates from the microdata.

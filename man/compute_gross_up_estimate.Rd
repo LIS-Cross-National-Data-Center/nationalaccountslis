@@ -4,7 +4,7 @@
 \alias{compute_gross_up_estimate}
 \title{Compute grossed up estimates from LIS microdata}
 \usage{
-compute_gross_up_estimate(df, weights, formulas)
+compute_gross_up_estimate(df, weights, formulas_microdata)
 }
 \arguments{
 \item{df}{A dataframe with the LIS microdata.}
@@ -12,7 +12,7 @@ compute_gross_up_estimate(df, weights, formulas)
 \item{weights}{A string or vector of strings with the names of the weight variable(s) to use.
 Must either have length 1 (all datasets use the same weight variable) or the same length as formulas.}
 
-\item{formulas}{A list of strings witht the formulas to compute the National Accounts estimates.}
+\item{formulas_microdata}{A list of strings witht the formulas to compute the National Accounts estimates.}
 }
 \description{
 Compute grossed up estimates from LIS microdata

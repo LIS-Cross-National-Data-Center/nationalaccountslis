@@ -4,7 +4,12 @@
 \alias{compute_estimates_single_lis_file}
 \title{Compute National Account estimates from a single LIS microdata file}
 \usage{
-compute_estimates_single_lis_file(dataset, data_path, weights, formulas)
+compute_estimates_single_lis_file(
+  dataset,
+  data_path,
+  weights,
+  formulas_microdata
+)
 }
 \arguments{
 \item{dataset}{A string with the name of the dataset to read.}
@@ -14,7 +19,7 @@ compute_estimates_single_lis_file(dataset, data_path, weights, formulas)
 \item{weights}{A string or vector of strings with the names of the weight variable(s) to use.
 Must either have length 1 (all datasets use the same weight variable) or the same length as formulas.}
 
-\item{formulas}{A list of strings witht the formulas to compute the National Accounts estimates.}
+\item{formulas_microdata}{A list of strings witht the formulas to compute the National Accounts estimates.}
 }
 \value{
 A dataframe with the National Accounts estimates from the microdata.
