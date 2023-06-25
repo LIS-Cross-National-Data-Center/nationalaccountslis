@@ -16,7 +16,7 @@
 #' @return A list of dataframes with the National Accounts estimates from the microdata.
 #' 
 #' @export
-compute_estimates_lis_microdata <- function(datasets, data_path, weights, formulas_microdata=nationalaccountslis::lis_dashboard_formulas){
+compute_estimates_lis_microdata <- function(datasets, data_path, weights, formulas_microdata=nationalaccountslis::lis_dashboard_microdata_formulas){
 
     # check that the 4th character of each dataset is either 'i', 'w' or 'e'
     assertthat::assert_that(all(stringr::str_sub(datasets, 5, 5) %in% c("i", "w", "e")),
