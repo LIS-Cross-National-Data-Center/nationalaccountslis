@@ -229,11 +229,11 @@ test_apply_formulas_missing_var <- function() {
     Y = "!is.na(m) ~ m, !is.na(z) ~ l, TRUE ~ NA"
   )
 
-  df_output1 <- apply_formulas(df, list_formulas1)
+  df_output1 <- apply_na_processing_formulas(df, list_formulas1)
 
   test_that("missing variable test - values are correctly assigned", {
-    expect_equal(df_output1$X, c(1, 2, 7))
-    expect_equal(df_output1$Y, c(1, 2, NA))
+    expect_equal(df_output1$X, c(1, 2, 3))
+    expect_equal(df_output1$Y, c(1, NA, 3))
   })
 }
 

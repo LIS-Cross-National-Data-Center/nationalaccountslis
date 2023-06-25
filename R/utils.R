@@ -4,8 +4,8 @@
 #'
 #' @return A vector of ISO3 country codes.
 #'
-#' \dontrun{
 #' @examples
+#' \dontrun{
 #' convert_iso2_to_iso3(c("US", "DE", "JP"))
 #' }
 convert_iso2_to_iso3 <- function(countries){
@@ -49,8 +49,8 @@ convert_iso2_to_iso3 <- function(countries){
 #'         for each formula in the input list. The name of each new column is the name of
 #'         the corresponding formula in the input list.
 #'
+#' @examples 
 #' \dontrun{
-#' @examples
 #' df <- data.frame(a = 1:3, b = 4:6, c = 7:9, d = 10:12)
 #' formulas <- list(Z = "a + b", Y = "c+d")
 #' compute_formulas(df, formulas)
@@ -106,8 +106,8 @@ parse_all_vars_from_formulas <- function(formulas){
 #'        for each formula in the input list. The name of each new column is the name of
 #'       the corresponding formula in the input list.
 #' 
+#' @examples 
 #' \dontrun{
-#' @examples
 #' df <- data.frame(a = c(1, NA, 3), b = c(NA, 5, 6), c = c(7, 8, 9))
 #' list_formulas <- list(
 #'  X = "!is.na(a) ~ a, !is.na(b) ~ b, TRUE ~ c",
@@ -115,8 +115,7 @@ parse_all_vars_from_formulas <- function(formulas){
 #' )
 #' apply_na_processing_formulas(df, list_formulas)
 #' }
-apply_na_processing_formulas <- function(df, list_formulas) {
-
+ apply_na_processing_formulas <- function(df, list_formulas) {
   for (var in names(list_formulas)) {
     exprs <- strsplit(list_formulas[[var]], "\\s*,\\s*")[[1]]
     
@@ -125,14 +124,16 @@ apply_na_processing_formulas <- function(df, list_formulas) {
     
     for (expr in exprs) {
       cond_val <- strsplit(expr, " ~ ")[[1]]
-      cond <- rlang::parse_expr(cond_val[1])
-      val <- rlang::parse_expr(cond_val[2])
+      cond <- parse_expr(cond_val[1])
+      val <- parse_expr(cond_val[2])
       
       # Loop through rows
       for(i in seq_len(nrow(df))) {
-        if (is.na(df[i, var]) & rlang::eval_tidy(cond, data = df[i,])) {
-          df[i, var] <- rlang::eval_tidy(val, data = df[i,])
-        }
+        tryCatch({
+          if (is.na(df[i, var]) & eval_tidy(cond, data = df[i,])) {
+            df[i, var] <- eval_tidy(val, data = df[i,])
+          }
+        }, error = function(e) NULL)
       }
     }
   }
