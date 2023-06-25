@@ -1,6 +1,6 @@
 Package: nationalaccountslis
 Title: National Accounts with LIS data
-Version: 0.0.0.9001
+Version: 0.0.0.9003
 Authors@R: 
     person("Josep", "Espasa Reig", , "jespasareig@gmail.com", role = c("aut", "cre"),
     )
@@ -18,7 +18,9 @@ Imports:
     haven,
     purrr,
     stringr,
-    fs
+    fs,
+    rlang
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    rlang
 LazyData: true
