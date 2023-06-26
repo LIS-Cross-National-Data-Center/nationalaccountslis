@@ -16,9 +16,6 @@
 compute_national_accounts_ratios <- function(df_estimates_microdata, na_table, 
     formulas_ratios = as.list(set_names(names(nationalaccountslis::lis_dashboard_microdata_formulas)))){
 
-    df_estimates_microdata <- microdata_estimates
-    na_table <- na_data_clean
-
     na_table <- compute_formulas(na_table, as.list(set_names(formulas_ratios)))
     
     na_table <- dplyr::select(na_table, ccyy, 
