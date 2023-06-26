@@ -1,7 +1,8 @@
 # nationalaccountslis
 
 <!-- badges: start -->
-  [![R-CMD-check](https://github.com/JosepER/nationalaccountslis/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JosepER/nationalaccountslis/actions/workflows/R-CMD-check.yaml)
+  [![](https://img.shields.io/badge/devel%20version-0.0.1-blue.svg)](https://github.com/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis)
+  [![](https://codecov.io/gh/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis/branch/master/graph/badge.svg)](https://codecov.io/gh/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis)
   <!-- badges: end -->
 
 ## Overview
