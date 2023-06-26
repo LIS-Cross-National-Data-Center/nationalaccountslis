@@ -21,6 +21,17 @@ test_that("convert_iso2_to_iso3 throws error if country not in map_iso2_iso3", {
 })
 
 
+# Testing convert_iso3_to_iso2 function
+test_that("Testing convert_iso3_to_iso2 function", {
+  expect_equal(convert_iso3_to_iso2(c("USA", "DEU", "JPN")), c("US", "DE", "JP"))
+  expect_equal(convert_iso3_to_iso2(c("FRA", "BRA", "IND")), c("FR", "BR", "IN"))
+  expect_equal(convert_iso3_to_iso2(c("AUT", "BEL", "CAN")), c("AT", "BE", "CA"))
+  
+  # Testing invalid input
+  expect_error(convert_iso3_to_iso2("ZZZ"))
+})
+
+
 # compute_formulas
 
 test_that("compute_formulas correctly computes formulas", {

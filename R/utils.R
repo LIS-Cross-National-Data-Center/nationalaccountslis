@@ -35,6 +35,43 @@ convert_iso2_to_iso3 <- function(countries){
     return(countries)
 }
 
+#' Convert ISO3 country codes to ISO2
+#'
+#' @param countries A vector of ISO3 country codes.
+#'
+#' @return A vector of ISO2 country codes.
+#'
+#' @examples
+#' \dontrun{
+#' convert_iso3_to_iso2(c("USA", "DEU", "JPN"))
+#' }
+convert_iso3_to_iso2 <- function(countries){
+    countries <- toupper(countries)
+
+    map_iso3_iso2 <- list(
+        "AUS" = "AU", "AUT" = "AT", "BEL" = "BE", "CAN" = "CA", 
+        "CHL" = "CL", "CHN" = "CN", "COL" = "CO", "CZE" = "CZ",
+        "DNK" = "DK", "EST" = "EE", "FIN" = "FI", "FRA" = "FR", 
+        "DEU" = "DE", "HUN" = "HU", "IRL" = "IE", "ISL" = "IS",
+        "ISR" = "IL", "ITA" = "IT", "LTU" = "LT", "LUX" = "LU", 
+        "JPN" = "JP", "KOR" = "KR", "MEX" = "MX", "NLD" = "NL",
+        "NOR" = "NO", "POL" = "PL", "ESP" = "ES", "SWE" = "SE", 
+        "RUS" = "RU", "ROU" = "RO", "SVN" = "SI", "CHE" = "CH",
+        "GBR" = "GB",
+        "USA" = "US",
+        "BRA" = "BR", "GEO" = "GE", "IND" = "IN", "SRB" = "RS"
+    )
+
+    # assert that all countries are in map_iso3_iso2
+    assertthat::assert_that(all(countries %in% names(map_iso3_iso2)),
+    msg = "Not all countries are in map_iso3_iso2")
+
+    # match iso3 to iso2
+    countries <- unname((unlist(map_iso3_iso2[countries])))
+
+    return(countries)
+}
+
 
 #' Compute Formulas
 #'
