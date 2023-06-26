@@ -44,8 +44,24 @@ produce_oecd_na_table <- function(na_data, formulas_na = nationalaccountslis::li
 
     na_data_wide <- apply_na_processing_formulas(na_data_wide, formulas_na)
 
-    na_data_clean <- na_data_wide[, c("country", "year", names(formulas_na))]
+    # drop variables that are from S1 or S14_S15
+    na_data_wide <- dplyr::select(na_data_wide, -ends_with("_S1"), -ends_with("_S14_S15"))
 
-    return(na_data_clean)
+    #TODO: PUT THE FOLLOWING INTO A FUNCTION
+    # drop variables that end with '_S14' IF the same variable already exists (e.g. drop D11R_S14 if D11R already exists)
+    variables_S14 <- names(na_data_wide)[stringr::str_detect(names(na_data_wide), pattern = "_S14$")]
+    variables_to_drop <- variables_S14[stringr::str_replace(variables_S14, pattern = "_S14$", "") %in% names(na_data_wide)]
 
+    na_data_wide <- dplyr::select(na_data_wide, -variables_to_drop)
+
+    # drop '_S14' from variable names
+    names(na_data_wide) <- stringr::str_remove(names(na_data_wide), pattern = "_S14$")
+
+    # compute `ccyy` variable
+    na_data_wide <- dplyr::mutate(na_data_wide, 
+        ccyy = paste0(tolower(convert_iso3_to_iso2(country)), stringr::str_sub(year, 3, 4)))
+
+    na_data_wide <- dplyr::select(na_data_wide, country, year, ccyy, everything())
+
+    return(na_data_wide)
 }
