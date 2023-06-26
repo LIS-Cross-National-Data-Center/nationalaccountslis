@@ -16,8 +16,26 @@ Must contain the following columns: \code{country}, \code{variable}, \code{secto
 \item{formulas_na}{A list with strings containing formulas to produce the National Accounts table.}
 }
 \value{
-A dataframe with the National Accounts table.
+A dataframe with the National Accounts table. It contains the following columns:
+\code{country}, \code{year} and one column per variable.
 }
 \description{
 Produce the National Accounts table for the OECD detailed non-financial data.
+
+Cleans the National Accounts data with the following steps:
+\itemize{
+\item remove prefix \code{NF} from variable
+\item use instructions in \code{formulas_na} to process the data (i.e.
+compute items using all available sectors)
+\item reshape the data to wide format (i.e. \code{country}, \code{year} and one column per variable)
+}
+}
+\examples{
+\dontrun{
+# download the National Accounts data
+na_data <- download_na_oecd()
+
+# produce the National Accounts table
+na_table <- produce_oecd_na_table(na_data)
+} 
 }
