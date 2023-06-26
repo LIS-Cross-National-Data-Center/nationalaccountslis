@@ -1,12 +1,12 @@
 # nationalaccountslis
 
+## Build & Testing Status
 <!-- badges: start -->
   [![](https://img.shields.io/badge/devel%20version-0.0.1-blue.svg)](https://github.com/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis)
   [![](https://codecov.io/gh/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis/branch/master/graph/badge.svg)](https://codecov.io/gh/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis)
   <!-- badges: end -->
 
 ## Overview
-
 `nationalaccountslis` is an R package to compute national accounts coverage ratios with the [LIS Data Center](https://www.lisdatacenter.org/) methodology. 
 
 It allows users to:
