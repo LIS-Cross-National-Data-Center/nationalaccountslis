@@ -1,8 +1,6 @@
 # nationalaccountslis
 
- <!-- badges: start -->
-  [![R-CMD-check](https://github.com/JosepER/nationalaccountslis/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JosepER/nationalaccountslis/actions/workflows/R-CMD-check.yaml)
-  <!-- badges: end -->
+
 ## Overview
 
 `nationalaccountslis` is an R package to compute National Accounts coverage ratios with the [LIS Data Center](https://www.lisdatacenter.org/) methodology. 
