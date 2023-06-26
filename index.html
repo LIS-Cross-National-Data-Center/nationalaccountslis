@@ -61,8 +61,8 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><code>nationalaccountslis</code> is an R package to compute National Accounts coverage ratios with the <a href="https://www.lisdatacenter.org/" class="external-link">LIS Data Center</a> methodology.</p>
-<p>It allows users to: * Reproduce the Coverage Ratios published in the <a href="https://comparability.lisdatacenter.org/shiny/comparability/" class="external-link">LIS Compare.IT</a> dashboard. * Download, clean and prepare National Accounts data from the OECD. * Compute estimates from microdata. * Compute and plot Coverage Ratios.</p>
+<p><code>nationalaccountslis</code> is an R package to compute national accounts coverage ratios with the <a href="https://www.lisdatacenter.org/" class="external-link">LIS Data Center</a> methodology.</p>
+<p>It allows users to: * Reproduce the coverage ratios published in the <a href="https://comparability.lisdatacenter.org/shiny/comparability/" class="external-link">LIS Compare.IT</a> dashboard. * Download, clean and prepare national accounts data from the OECD. * Compute estimates from microdata. * Compute and plot coverage ratios.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -79,7 +79,23 @@
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">nationalaccountslis</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># download the national accounts using the OECD API</span></span>
+<span><span class="va">na_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_na_oecd.html">download_na_oecd</a></span><span class="op">(</span>start_year <span class="op">=</span> <span class="fl">1985</span>, countries <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ITA"</span>, <span class="st">"USA"</span><span class="op">)</span>,</span>
+<span>                 items <span class="op">=</span> <span class="va">lis_dashboard_items</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># clean the downloaded national accounts data and create a wide table</span></span>
+<span><span class="va">na_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/produce_oecd_na_table.html">produce_oecd_na_table</a></span><span class="op">(</span><span class="va">na_data</span>, <span class="fu">nationalaccountslis</span><span class="fu">::</span><span class="va">lis_dashboard_na_formulas</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compute the estimates from microdata</span></span>
+<span><span class="va">microdata_estimates</span> <span class="op">&lt;-</span> <span class="fu">nationalaccountslis</span><span class="fu">::</span><span class="fu"><a href="reference/compute_estimates_lis_microdata.html">compute_estimates_lis_microdata</a></span><span class="op">(</span>datasets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"it14i"</span>, <span class="st">"us16i"</span><span class="op">)</span>,</span>
+<span>                                data_path <span class="op">=</span> <span class="st">"data-raw/"</span>, <span class="co"># &lt;- Replace with the path to local files.</span></span>
+<span>                                weights<span class="op">=</span> <span class="st">"hpopwgt"</span>,</span>
+<span>                                formulas<span class="op">=</span> <span class="fu">nationalaccountslis</span><span class="fu">::</span><span class="va">lis_dashboard_microdata_formulas</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compute the coverage ratios </span></span>
+<span><span class="fu"><a href="reference/compute_national_accounts_ratios.html">compute_national_accounts_ratios</a></span><span class="op">(</span><span class="va">microdata_estimates</span>, <span class="va">na_table</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
