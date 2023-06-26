@@ -1,7 +1,7 @@
 library(testthat)
 
 # Given dataframe
-data <- data.frame(
+na_data <- data.frame(
   
   country = rep("ITA", 36), 
   variable = rep(c("NFD11R", "NFD41R", "NFD61P", "NFB6GR", "NFD5P", "NFB3GR", "NFK1R", "NFD42R", "NFD62R", "NFD12R", "NFD4R", "NFD45R"), 3), 
