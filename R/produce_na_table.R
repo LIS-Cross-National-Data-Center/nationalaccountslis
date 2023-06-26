@@ -39,6 +39,9 @@ produce_oecd_na_table <- function(na_data, formulas_na = nationalaccountslis::li
     # paste `variable` and `sector` together
     na_data <- dplyr::mutate(na_data, variable = paste(variable, sector, sep = "_"))
 
+    # change `value` to numeric
+    na_data$value <- as.numeric(na_data$value)
+
     # reshape `na_data` to wide format
     na_data_wide <- tidyr::pivot_wider(na_data, id_cols = c("country", "year"), names_from = "variable", values_from = "value")
 
