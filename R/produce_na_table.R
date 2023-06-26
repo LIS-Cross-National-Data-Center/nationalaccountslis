@@ -68,21 +68,3 @@ produce_oecd_na_table <- function(na_data, formulas_na = nationalaccountslis::li
 
     return(na_data_wide)
 }
-
-test_that("produce_oecd_na_table function checks for necessary columns", {
-  # Remove a necessary column from the data
-  bad_data <- na_data
-  bad_data$variable <- NULL
-
-  # The function should throw an error with the appropriate message
-  expect_error(produce_oecd_na_table(bad_data, formulas_na), 
-               "The input data frame must contain the following columns: country, variable, sector, year, value.")
-
-  # Now remove another necessary column
-  bad_data$country <- NULL
-
-  # The function should still throw an error with the appropriate message
-  expect_error(produce_oecd_na_table(bad_data, formulas_na), 
-               "The input data frame must contain the following columns: country, variable, sector, year, value.")
-})
-

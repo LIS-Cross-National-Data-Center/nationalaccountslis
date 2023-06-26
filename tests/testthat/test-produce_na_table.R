@@ -16,7 +16,7 @@ na_data <- data.frame(
 
 formulas_na <- nationalaccountslis::lis_dashboard_na_formulas
 
-test_that("produce_oecd_na_table function returns expected output", {
+testthat::test_that("produce_oecd_na_table function returns expected output", {
   # Test that the function works with normal input
   result <- produce_oecd_na_table(na_data, formulas_na)
   expect_is(result, "data.frame")
@@ -26,7 +26,8 @@ test_that("produce_oecd_na_table function returns expected output", {
   expect_equal(all(expected_cols %in% names(result)), TRUE)
 })
 
-test_that("produce_oecd_na_table function handles special variable cases", {
+
+testthat::test_that("produce_oecd_na_table function handles special variable cases", {
   result <- produce_oecd_na_table(na_data, formulas_na)
 
   # Test that '_S14', '_S14_S15' and '_S1' variables are dropped from the result
@@ -35,3 +36,22 @@ test_that("produce_oecd_na_table function handles special variable cases", {
                        "D11R_S1", "D12R_S1", "B3GR_S1", "D62R_S1", "D61P_S1")
   expect_false(any(unexpected_cols %in% names(result)))
 })
+
+
+test_that("produce_oecd_na_table function checks for necessary columns", {
+  # Remove a necessary column from the data
+  bad_data <- na_data
+  bad_data$variable <- NULL
+
+  # The function should throw an error with the appropriate message
+  expect_error(produce_oecd_na_table(bad_data, formulas_na), 
+               "The input data frame must contain the following columns: country, variable, sector, year, value.")
+
+  # Now remove another necessary column
+  bad_data$country <- NULL
+
+  # The function should still throw an error with the appropriate message
+  expect_error(produce_oecd_na_table(bad_data, formulas_na), 
+               "The input data frame must contain the following columns: country, variable, sector, year, value.")
+})
+
