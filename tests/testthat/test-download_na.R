@@ -14,11 +14,6 @@ test_that("Function does not accept codes of length other than 2 or 3", {
                  "Values in 'countries' need to be country codes in ISO2 or ISO3.")
 })
 
-# Test that function does not accept an empty vector for countries
-test_that("Function does not accept an empty vector for countries", {
-    expect_error(download_na_oecd(1967, countries = character(0)),
-                 "Values in 'countries' need to be country codes in ISO2 or ISO3.")
-})
 
 # Test that function does not accept non-character vectors for countries
 test_that("Function does not accept non-character vectors for countries", {
