@@ -18,7 +18,7 @@ It allows users to:
 ## Installation
 You can install the package from this GitHub repo with:
 ```r
-devtools::install_github("https://github.com/JosepER/nationalaccountslis)
+devtools::install_github("https://github.com/JosepER/nationalaccountslis")
 ```
 
 ## Version

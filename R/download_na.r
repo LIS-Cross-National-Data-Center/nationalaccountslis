@@ -19,7 +19,7 @@
 #'  items = c("NFD11R", "NFD12R", "NFB3GR"))
 #' }
 #' @export
-download_na_oecd <- function(start_year = 1967, countries = nationalaccountstools::lis_dashboard_countries,
+download_na_oecd <- function(start_year = 1967, countries = nationalaccountslis::lis_dashboard_countries,
                     items = nationalaccountslis::lis_dashboard_items){
 
         # Deal with countries
