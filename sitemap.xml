@@ -19,6 +19,9 @@
     <loc>/reference/check_col_names_are_equal.html</loc>
   </url>
   <url>
+    <loc>/reference/compute_coverage_ratios.html</loc>
+  </url>
+  <url>
     <loc>/reference/compute_estimates_lis_microdata.html</loc>
   </url>
   <url>
@@ -29,9 +32,6 @@
   </url>
   <url>
     <loc>/reference/compute_gross_up_estimate.html</loc>
-  </url>
-  <url>
-    <loc>/reference/compute_national_accounts_ratios.html</loc>
   </url>
   <url>
     <loc>/reference/convert_iso2_to_iso3.html</loc>
