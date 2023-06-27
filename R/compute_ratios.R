@@ -1,7 +1,7 @@
-#' Compute National Accounts ratios
+#' Compute National Accounts coverage ratios
 #' 
 #' @description
-#' Compute the National Accounts ratios from the items in microdata and National Accounts.
+#' Compute the National Accounts coverage ratios from the microdata estimates and items in National Accounts.
 #' 
 #' @param df_estimates_microdata A dataframe with the National Accounts estimates from the microdata.
 #'   Must contain the `ccyyd` column and one column per variable, with column names matching the 
@@ -9,11 +9,12 @@
 #' @param na_table A dataframe with the National Accounts data. E.g. as returned by `produce_oecd_na_table()`.
 #'   Must contain the following columns: `country`, `year` and one column per variable. E.g.
 #'   data.frame(country = c("ITA", "USA"), year = c(1985, 1985), D11R = c(100, 200), D12R = c(300, 400))
+#' @param formulas_ratios A list with strings containing formulas to produce the National Accounts ratios.
 #' 
 #' @return A dataframe with the National Accounts ratios.
 #' 
 #' @export
-compute_national_accounts_ratios <- function(df_estimates_microdata, na_table, 
+compute_coverage_ratios <- function(df_estimates_microdata, na_table, 
     formulas_ratios = as.list(set_names(names(nationalaccountslis::lis_dashboard_microdata_formulas)))){
 
     na_table <- compute_formulas(na_table, as.list(set_names(formulas_ratios)))

@@ -42,7 +42,7 @@ microdata_estimates <- nationalaccountslis::compute_estimates_lis_microdata(data
                                 formulas= nationalaccountslis::lis_dashboard_microdata_formulas)
 
 # Compute the coverage ratios 
-compute_national_accounts_ratios(microdata_estimates, na_table)
+compute_coverage_ratios(microdata_estimates, na_table)
 
 #  A tibble: 12 × 5
 #    ccyyd variable            value_mi  value_na   ratio
