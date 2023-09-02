@@ -2,7 +2,7 @@
 
 ## Build & Testing Status
 <!-- badges: start -->
-  [![](https://img.shields.io/badge/devel%20version-0.0.2-blue.svg)](https://github.com/https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis)
+  [![](https://img.shields.io/badge/devel%20version-0.0.2-blue.svg)](https://github.com/LIS-Cross-National-Data-Center/nationalaccountslis)
   [![codecov](https://codecov.io/gh/LIS-Cross-National-Data-Center/nationalaccountslis/branch/master/graph/badge.svg?token=Q821TT6WLC)](https://codecov.io/gh/LIS-Cross-National-Data-Center/nationalaccountslis)
   <!-- badges: end -->
 
